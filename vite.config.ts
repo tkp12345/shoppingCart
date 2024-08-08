@@ -5,7 +5,13 @@ import * as path from 'node:path';
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: 4000,
+    proxy: {
+      '/api': {
+        target: 'https://bucket-assignment-vercel.vercel.app',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '/api')
+      }
+    }
   },
   resolve: {
     alias: {

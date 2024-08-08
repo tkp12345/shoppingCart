@@ -1,5 +1,5 @@
-import {axiosInstance} from "@/api/axios-instance.ts";
-import {ProductType} from "@/types/product-types.ts";
+import {axiosInstance} from "@/api/axios/axios-instance.ts";
+import {ProductType} from "@/types/api/product-types.ts";
 import {useQuery} from "react-query";
 
 const fetchProducts = async (page :number , type: ProductType) => {
@@ -15,7 +15,7 @@ const fetchProducts = async (page :number , type: ProductType) => {
 };
 
 
-export const useProducts = (page: number, type: string) => {
+export const useProducts = (page: number, type: ProductType) => {
     return useQuery(['products', page, type], () => fetchProducts(page, type), {
         keepPreviousData: true,
     });
