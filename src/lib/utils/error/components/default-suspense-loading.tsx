@@ -1,10 +1,10 @@
-import { Spinner } from '@/ui/emotion/spinner';
-import styled from '@emotion/styled';
+import { Spinner } from "@/ui/emotion/spinner";
+import styled from "@emotion/styled";
 
 export const DefaultSuspenseLoading = () => {
   return (
     <DefaultSuspenseLoadingLayout>
-      <Spinner size={'medium'} />
+      <Spinner size={"medium"} />
     </DefaultSuspenseLoadingLayout>
   );
 };

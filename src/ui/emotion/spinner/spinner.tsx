@@ -1,19 +1,30 @@
-import { keyframes } from '@emotion/react';
-import styled from '@emotion/styled';
-import type { SpinnerColor, SpinnerProps } from './spinner.types';
-import { spinnerSize, spinnerStyle } from './spinner.variants';
+import { keyframes } from "@emotion/react";
+import styled from "@emotion/styled";
+import type { SpinnerColor, SpinnerProps } from "./spinner.types";
+import { spinnerSize, spinnerStyle } from "./spinner.variants";
 
 const PATH_LENGTH = 50 as const;
 
-export const Spinner = ({ size, color = 'default' }: SpinnerProps) => {
+export const Spinner = ({ size, color = "default" }: SpinnerProps) => {
   const { width, height, strokeWidth } = spinnerSize[size];
 
   const viewBox = `-${width / 2} -${height / 2} ${width} ${height}`;
   const circleRadius = width / 2 - strokeWidth / 2;
 
   return (
-    <StyledSvg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox={viewBox}>
-      <StyledCircle r={circleRadius} strokeWidth={strokeWidth} fill="none" pathLength={PATH_LENGTH} color={color} />
+    <StyledSvg
+      xmlns="http://www.w3.org/2000/svg"
+      width={width}
+      height={height}
+      viewBox={viewBox}
+    >
+      <StyledCircle
+        r={circleRadius}
+        strokeWidth={strokeWidth}
+        fill="none"
+        pathLength={PATH_LENGTH}
+        color={color}
+      />
     </StyledSvg>
   );
 };
@@ -38,5 +49,8 @@ const StyledSvg = styled.svg`
 `;
 
 const StyledCircle = styled.circle<{ color: SpinnerColor }>`
-  ${({ color }) => ({ ...spinnerStyle[color] })}
+  stroke: ${({ color }) =>
+    color === "default" ? "#000" : spinnerStyle[color].stroke || "#000"};
+  stroke-width: 4px;
+  fill: none;
 `;

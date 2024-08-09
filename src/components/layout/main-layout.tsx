@@ -4,7 +4,7 @@ export const MainLayout = styled.main`
   max-width: ${({ theme }) => theme.breakpoints.desktop};
   margin: 0 auto;
   width: 100%;
-  // padding: ${({ theme }) => theme.spacing.margin};
+  height: 100%;
   text-align: center;
 
   /* 1920px 이상일 때 */
